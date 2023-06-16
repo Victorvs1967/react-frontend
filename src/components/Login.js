@@ -45,7 +45,7 @@ const Login = () => {
     <div>
       <AppNavbar />
       <Container>
-        { title }
+        <h3>{ title }</h3>
         <Form onSubmit={ handleSubmit }>
           <FormGroup>
             <Label for='username'>Username</Label>
@@ -56,14 +56,13 @@ const Login = () => {
             <Input type='password' name='password' id='password' onChange={ handleChange } />
           </FormGroup>
           <FormGroup>
-            <Button color="primary" type='submit'>Login</Button>{ ' ' }
-            <Button color="secondary" tag={ Link } to="/books">Cancel</Button>
+            <Button color="primary" type='submit' style={{ marginRight: '10px' }}>Login</Button>
+            <Button color="secondary" tag={ Link } to="/">Cancel</Button>
           </FormGroup>
         </Form>
       </Container>
     </div>
   );
-
 };
 
 export default Login;

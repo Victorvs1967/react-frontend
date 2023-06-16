@@ -20,8 +20,9 @@ const AppNavbar = () => {
 
         </Nav>
       </Collapse>
-      <Button tag={Link} to="/login">Login</Button>{'  '}
-      <Button onClick={logout} style={{ marginLeft: '10px' }}>logout</Button>
+      <Button tag={ Link} to="/signup" style={{ marginRight: '10px' }}>Sign Up</Button>
+      <Button tag={ Link } to="/login" style={{ marginRight: '10px' }}>Login</Button>
+      <Button onClick={ logout }>logout</Button>
     </Navbar>
   );
 }

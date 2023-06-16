@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+
+  database:
+    container_name: db_container
+    image: "mongo:4.4.7"
+    hostname: db_host
+    volumes:
+      - ./db_data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+
+  backend:
+    image: backend
+    build:
+      context: ../python-flask-base
+      dockerfile: Dockerfile
+    container_name: backend_container
+    environment:
+      - PYTHONUNBUFFERED=True
+    restart: on-failure
+    ports:
+      - 8000:8000
+    volumes:
+      - ../python-flask-base:/backend
+    networks:
+      - backend
+    depends_on:
+      - database
+    command: gunicorn --reload -b 0.0.0.0:8000 server:app
+
+  frontend:
+    image: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - /app/node_modules
+      - ./:/app
+
+networks:
+  backend:
+    external: false
+    name: backend
+  frontend:
+    external: true
+    name: frontend
