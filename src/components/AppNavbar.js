@@ -17,12 +17,11 @@ const AppNavbar = () => {
       <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="justify-content-end" style={{ width: "100%" }} navbar>
-
+          <Button color='primary' tag={ Link} to="/signup" style={{ margin: '5px' }}>Sign Up</Button>
+          <Button color='success' tag={ Link } to="/login" style={{ margin: '5px' }}>Login</Button>
+          <Button color='secondary' onClick={logout} style={{ margin: '5px' }}>logout</Button>
         </Nav>
       </Collapse>
-      <Button tag={ Link} to="/signup" style={{ marginRight: '10px' }}>Sign Up</Button>
-      <Button tag={ Link } to="/login" style={{ marginRight: '10px' }}>Login</Button>
-      <Button onClick={ logout }>logout</Button>
     </Navbar>
   );
 }

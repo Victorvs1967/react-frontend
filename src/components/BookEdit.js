@@ -30,7 +30,7 @@ const BookEdit = () => {
         .then(response => response.json())
         .then(data => setBook(data));
     }
-  }, [ id, setBook ]);
+  }, [ id, token, setBook ]);
 
   const handleChange = event => {
     const { name, value } = event.target;

@@ -27,7 +27,7 @@ const BookList = () => {
           setLoading(false);
         });
     }
-  }, []);
+  }, [ token ]);
 
   const remove = async id => {
     await fetch('http://localhost:8000/api/books/'.concat(id), {
